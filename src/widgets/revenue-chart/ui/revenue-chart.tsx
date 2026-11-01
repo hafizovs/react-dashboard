@@ -58,9 +58,9 @@ export function RevenueChart() {
   const total = data.reduce((sum, point) => sum + point.revenue, 0)
 
   return (
-    <section className="rounded-lg border border-[var(--border)] bg-[var(--bg)] p-4 shadow-sm">
-      <div className="mb-4 flex items-baseline justify-between gap-2">
-        <div>
+    <section className="min-w-0 rounded-lg border border-[var(--border)] bg-[var(--bg)] p-3 shadow-sm sm:p-4">
+      <div className="mb-4 flex min-w-0 flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-2">
+        <div className="min-w-0">
           <h2 className="text-sm font-semibold text-[var(--text-h)]">
             Revenue over time
           </h2>
@@ -68,7 +68,7 @@ export function RevenueChart() {
             Paid and shipped orders in range
           </p>
         </div>
-        <p className="text-sm font-medium text-[var(--text-h)]">
+        <p className="shrink-0 text-sm font-medium text-[var(--text-h)]">
           {formatCurrency(total)}
         </p>
       </div>
@@ -78,9 +78,9 @@ export function RevenueChart() {
           description="Try widening the date filter to see the line chart."
         />
       ) : (
-        <div className="h-64 w-full">
+        <div className="h-56 w-full min-w-0 sm:h-64">
           <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
+            <LineChart data={data} margin={{ top: 8, right: 4, left: 0, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
               <XAxis
                 dataKey="date"
@@ -90,7 +90,7 @@ export function RevenueChart() {
               <YAxis
                 tickFormatter={(value) => formatCurrency(Number(value))}
                 tick={{ fontSize: 11, fill: 'var(--muted-foreground)' }}
-                width={72}
+                width={56}
               />
               <Tooltip
                 formatter={(value) => formatCurrency(Number(value))}

@@ -71,8 +71,8 @@ export function ChannelChart() {
   const total = data.reduce((sum, entry) => sum + entry.revenue, 0)
 
   return (
-    <section className="rounded-lg border border-[var(--border)] bg-[var(--bg)] p-4 shadow-sm">
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+    <section className="min-w-0 rounded-lg border border-[var(--border)] bg-[var(--bg)] p-3 shadow-sm sm:p-4">
+      <div className="mb-4 flex min-w-0 flex-wrap items-center justify-between gap-2">
         <div>
           <h2 className="text-sm font-semibold text-[var(--text-h)]">
             Revenue by channel
@@ -106,7 +106,7 @@ export function ChannelChart() {
           description="No non-cancelled orders in the selected date range."
         />
       ) : (
-        <div className="h-64 w-full">
+        <div className="h-56 w-full min-w-0 sm:h-64">
           <ResponsiveContainer width="100%" height="100%">
             {mode === 'pie' ? (
               <PieChart>
@@ -114,8 +114,8 @@ export function ChannelChart() {
                   data={data}
                   dataKey="revenue"
                   nameKey="label"
-                  innerRadius={48}
-                  outerRadius={88}
+                  innerRadius={40}
+                  outerRadius={72}
                   paddingAngle={2}
                 >
                   {data.map((entry, index) => (
@@ -128,7 +128,7 @@ export function ChannelChart() {
                 <Tooltip formatter={(value) => formatCurrency(Number(value))} />
               </PieChart>
             ) : (
-              <BarChart data={data} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
+              <BarChart data={data} margin={{ top: 8, right: 4, left: 0, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
                 <XAxis
                   dataKey="label"
@@ -137,7 +137,7 @@ export function ChannelChart() {
                 <YAxis
                   tickFormatter={(value) => formatCurrency(Number(value))}
                   tick={{ fontSize: 11, fill: 'var(--muted-foreground)' }}
-                  width={72}
+                  width={56}
                 />
                 <Tooltip formatter={(value) => formatCurrency(Number(value))} />
                 <Bar dataKey="revenue" fill="var(--accent)" radius={[4, 4, 0, 0]} />
