@@ -178,7 +178,7 @@ export function OrdersTable() {
   }
 
   return (
-    <section className="rounded-lg border border-[var(--border)] bg-[var(--bg)] p-4 shadow-sm">
+    <section className="min-w-0 rounded-lg border border-[var(--border)] bg-[var(--bg)] p-3 shadow-sm sm:p-4">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 className="text-sm font-semibold text-[var(--text-h)]">Orders</h2>
@@ -215,7 +215,7 @@ export function OrdersTable() {
         />
       ) : (
         <>
-          <div className="overflow-x-auto rounded-md border border-[var(--border)]">
+          <div className="max-w-full overflow-x-auto rounded-md border border-[var(--border)] overscroll-x-contain">
             <table className="w-full min-w-[640px] border-collapse text-sm">
               <thead className="bg-[var(--muted)]">
                 {table.getHeaderGroups().map((headerGroup) => (
